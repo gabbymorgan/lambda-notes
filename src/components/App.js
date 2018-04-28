@@ -17,8 +17,8 @@ class App extends Component {
 
   render() {
     return (
-      <Container>
-        <Row className="Container">
+      <Container className="Container">
+        <Row className="Container__Row">
           <Col xs="12" md="3" className="Menu">
             <h1 className='Menu__heading'>Lambda Notes</h1>
             <Link to="/">
