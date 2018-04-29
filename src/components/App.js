@@ -17,8 +17,7 @@ class App extends Component {
 
   render() {
     return (
-      <Container className="Container">
-        <Row className="Container__Row">
+        <Row className="Container">
           <Col xs="12" md="3" className="Menu">
             <h1 className='Menu__heading'>Lambda Notes</h1>
             <Link to="/">
@@ -35,7 +34,6 @@ class App extends Component {
             <Route path="/create" component={Create}/>
           </Col>
         </Row>
-      </Container>
     );
   }
 }
