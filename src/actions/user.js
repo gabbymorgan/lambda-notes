@@ -6,7 +6,7 @@ export const SIGNOUT = 'SIGNOUT';
 
 export const register = user => {
     return dispatch => {
-        return axios('https://quiet-fjord-20542.herokuapp.com/users/register', user, { withCredentials: true })
+        return axios('https://quiet-fjord-20542.herokuapp.com/users/register', user)
         .then((response) => {
             console.log(response);
             dispatch({
