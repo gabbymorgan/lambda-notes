@@ -10,30 +10,19 @@ export const SEARCH = 'SEARCH';
 
 let noteId = 0;
 
-axios.get('https://lambda-notes-b2b43.firebaseio.com/notes.json')
-        .then((response) => {
-            if(Object.keys(response.data).length) {
-                noteId = (Object.keys(response.data).reduce(
-                    (a,b) => {return parseInt(a) > parseInt(b)  ? a : b}));
-                console.log(noteId);
-            }
-        })
-        .catch((error) => console.log(error));
-
 export const fetchNotes = () => {
     return dispatch => {
-        return axios.get('https://lambda-notes-b2b43.firebaseio.com/notes.json')
+        return axios.get('https://quiet-fjord-20542.herokuapp.com/notes')
         .then((response) => {
-            console.log('fetching');
-            dispatch({type: FETCH_NOTES, notes: response.data});
+            console.log(response);
+            dispatch({ type: FETCH_NOTES, notes: response.data });
         })
         .catch((error) => console.log(error))};
 }
 
 export const createNote = note => {
     return dispatch => {
-        return axios.put(`https://lambda-notes-b2b43.firebaseio.com/notes/${++noteId}.json`, {
-            id: noteId.toString(),
+        return axios.post(`https://quiet-fjord-20542.herokuapp.com/notes/`, {
             title: note.title,
             text: note.text
         })
@@ -41,22 +30,21 @@ export const createNote = note => {
             dispatch({
                 type: CREATE_NOTE,
             });
-            window.location.reload();
         })
         .catch((error) => console.log(error))};
 }
 
 export const editNote = note => {
     return dispatch => {
-        return axios.put(`https://lambda-notes-b2b43.firebaseio.com/notes/${note.id}.json`, {
-            id: note.id,
+        return axios.put(`https://quiet-fjord-20542.herokuapp.com/notes/${note._id}`, {
+            _id: note._id,
             title: note.title,
             text: note.text
         })
         .then((response) => {
             dispatch({
                 type: EDIT_NOTE,
-                id: note.id,
+                _id: note._id,
                 title: note.title,
                 text: note.text
             })
@@ -66,13 +54,13 @@ export const editNote = note => {
 
 export const deleteNote = note => {
     return dispatch => {
-        return axios.delete(`https://lambda-notes-b2b43.firebaseio.com/notes/${note.id}.json`, {
-            id: note.id,
+        return axios.delete(`https://quiet-fjord-20542.herokuapp.com/notes/${note._id}`, {
+            _id: note._id,
         })
         .then((response) => {
             dispatch({
                 type: DELETE_NOTE,
-                id: note.id,
+                _id: note._id,
                 title: note.title,
                 text: note.text
             })})
@@ -93,11 +81,11 @@ export const sortOldest = () => {
 
 export const search = (input) => {
     return dispatch => {
-        return axios.get('https://lambda-notes-b2b43.firebaseio.com/notes.json')
+        return axios.get('https://quiet-fjord-20542.herokuapp.com/notes')
         .then((response) => {
             dispatch({
                 type: SEARCH,
-                notes: Object.values(response.data),
+                notes: response.data,
                 input});
         })
         .catch((error) => console.log(error))};

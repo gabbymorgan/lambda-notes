@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Container, Row, Col, Modal, ModalBody, Button } from 'reactstrap';
 
-import { deleteNote } from '../actions';
+import { deleteNote } from '../../actions/notes';
 import './Note.css';
 
 class Note extends Component {

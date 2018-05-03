@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Container, Row, Col, Form, FormGroup, Input } from 'reactstrap';
 import { connect } from 'react-redux';
-import { editNote } from '../actions';
+import { editNote } from '../../actions/notes';
 
 class Edit extends Component {
     state = {

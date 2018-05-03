@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './App.css';
 import { Route, Link } from 'react-router-dom';
-import List from './List';
-import Edit from './Edit';
-import Create from './Create';
-import Note from './Note';
 import { Container, Row, Col, Button } from 'reactstrap';
-import { createNote, fetchNotes, search } from '../actions';
+import { createNote, search } from '../../actions/notes';
+
+import Landing from '../Landing/Landing';
+import Register from '../Register/Register';
+import SignIn from '../SignIn/SignIn';
+import List from '../List/List';
+import Edit from '../Edit/Edit';
+import Create from '../Create/Create';
+import Note from '../Note/Note';
+import './App.css';
 
 class App extends Component {
-  componentDidMount() {
-      this.props.fetchNotes();
-      this.props.search('');
-  }
-
   render() {
     return (
         <Row className="Container">
@@ -28,7 +27,10 @@ class App extends Component {
             </Link>
           </Col>
           <Col className="ContentArea">
-            <Route exact path="/" component={List}/>
+            <Route exact path="/" component={Landing}/>
+            <Route path="/register" component={Register}/>
+            <Route path="/signin" component={SignIn}/>
+            <Route path="/notes" component={List}/>
             <Route path="/notes/:id" component={Note}/>
             <Route path="/edit/:id" component={Edit}/>
             <Route path="/create" component={Create}/>
@@ -44,4 +46,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {createNote, fetchNotes, search })(App);
+export default connect(mapStateToProps, { createNote, search })(App);

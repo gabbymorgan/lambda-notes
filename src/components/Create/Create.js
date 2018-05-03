@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Form, FormGroup, Input, Button } from 'reactstrap';
-import { createNote, fetchNotes } from '../actions';
+import { createNote, fetchNotes } from '../../actions/notes';
 import { connect } from 'react-redux';
 import './Create.css';
 

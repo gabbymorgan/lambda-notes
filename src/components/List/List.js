@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import NoteCard from './NoteCard';
-import Searchbar from './Searchbar';
 import { connect } from 'react-redux';
 import { Container, Row, Col } from 'reactstrap';
+
+import NoteCard from '../NoteCard/NoteCard';
+import Searchbar from '../Searchbar/Searchbar';
+import { fetchNotes, sortNewest, sortOldest } from '../../actions/notes';
 import './List.css';
-import { sortNewest, sortOldest } from '../actions';
+
 
 class List extends Component {
     handleNewest() {
@@ -15,6 +17,10 @@ class List extends Component {
     handleOldest() {
         this.props.sortOldest();
         this.props.history.push('/');
+    }
+
+    componentDidMount() {
+        this.props.fetchNotes();
     }
 
     render() {
@@ -56,4 +62,4 @@ const mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps, { sortNewest, sortOldest })(List);
+export default connect(mapStateToProps, { fetchNotes, sortNewest, sortOldest })(List);

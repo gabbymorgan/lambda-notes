@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Form, FormGroup, Input } from 'reactstrap';
-import { search } from '../actions';
+import { search } from '../../actions/notes';
 
 class Searchbar extends Component {
     handleChange(event) {
