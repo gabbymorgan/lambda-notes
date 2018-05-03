@@ -18,7 +18,7 @@ export const register = user => {
 export const signIn = credentials => {
     return dispatch => {
         return axios
-        .post('https://quiet-fjord-20542.herokuapp.com/users/login', credentials)
+        .post('https://quiet-fjord-20542.herokuapp.com/users/login', credentials, { withCredentials: true })
         .then((response) => {
             console.log(response);
             dispatch({
