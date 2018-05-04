@@ -58,8 +58,7 @@ class Note extends Component {
                 </Row>
                 <Row>
                     <Col>
-                        <Modal isOpen={this.state.modal} toggle={this.toggleModal}
-                        className={this.props.className}>
+                        <Modal isOpen={this.state.modal} toggle={this.toggleModal}>
                             <ModalBody>
                                 <h4>Are you sure you want to delete this?</h4>
                                 <Button className="Button DeleteModal__delete-button" color="deoco" onClick={() => this.handleDelete()}>

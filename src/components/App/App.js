@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { Route, Link } from 'react-router-dom';
 import { Row, Col, Button } from 'reactstrap';
 import { createNote, search } from '../../actions/notes';
-import Cookies from 'js-cookie';
 
+import Cookies from 'js-cookie';
 import Menu from '../Menu/Menu';
 import Landing from '../Landing/Landing';
 import Register from '../Register/Register';
@@ -17,11 +17,6 @@ import Note from '../Note/Note';
 import './App.css';
 
 class App extends Component {
-
-  componentDidMount() {
-    console.log(Cookies.get('Auth'));
-  }
-
   render() {
     return (
         <Row className="Container">

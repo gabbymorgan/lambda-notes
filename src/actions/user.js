@@ -5,11 +5,13 @@ export const REGISTER = 'REGISTER';
 export const SIGNIN = 'SIGNIN';
 export const SIGNOUT = 'SIGNOUT';
 export const ERROR_SIGNIN = 'ERROR_SIGNIN';
+axios.defaults.withCredentials = true;
+axios.default.baseURL = 'https://quiet-fjord-20542.herokuapp.com';
 
 export const register = user => {
     return dispatch => {
         return axios
-        .post('https://quiet-fjord-20542.herokuapp.com/users/register', user)
+        .post('/users/register', user)
         .then((response) => {
             dispatch({
                 type: REGISTER,
@@ -20,9 +22,9 @@ export const register = user => {
 export const signIn = credentials => {
     return dispatch => {
         return axios
-        .post('https://quiet-fjord-20542.herokuapp.com/users/login', credentials, { 'withCredentials': true, 'Access-Control-Allow-Credentials': true })
+        .post('/users/login', credentials, { 'withCredentials': true, 'Access-Control-Allow-Credentials': true })
         .then(() => {
-            return axios.get('https://quiet-fjord-20542.herokuapp.com/notes', { 'withCredentials': true, 'Access-Control-Allow-Credentials': true})
+            return axios.get('/notes', { 'withCredentials': true, 'Access-Control-Allow-Credentials': true})
             .then((response) => {
                 console.log(response);
                 dispatch({ type: SIGNIN })
@@ -34,7 +36,7 @@ export const signIn = credentials => {
 export const signOut = () => {
     return dispatch => {
         return axios
-        .post('https://quiet-fjord-20542.herokuapp.com/users/logout')
+        .post('/users/logout')
         .then((response) => {
             console.log(response);
             dispatch({

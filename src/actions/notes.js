@@ -8,11 +8,12 @@ export const SORT_NEWEST = 'SORT_NEWEST';
 export const SORT_OLDEST = 'SORT_OLDEST';
 export const FETCH_NOTES = 'FETCH_NOTES';
 export const SEARCH = 'SEARCH';
-
+axios.defaults.withCredentials = true;
+axios.defaults.baseURL = 'https://quiet-fjord-20542.herokuapp.com';
 
 export const fetchNotes = () => {
     return dispatch => {
-        return axios.get('https://quiet-fjord-20542.herokuapp.com/notes', { 'withCredentials': true, 'Access-Control-Allow-Credentials': true})
+        return axios.get('/notes', { 'withCredentials': true, 'Access-Control-Allow-Credentials': true})
         .then((response) => {
             console.log(response);
             dispatch({ type: FETCH_NOTES, notes: response.data });
@@ -23,7 +24,7 @@ export const fetchNotes = () => {
 
 export const createNote = note => {
     return dispatch => {
-        return axios.post(`https://quiet-fjord-20542.herokuapp.com/notes/`, {
+        return axios.post(`/notes/`, {
             title: note.title,
             text: note.text
         })
@@ -37,7 +38,7 @@ export const createNote = note => {
 
 export const editNote = note => {
     return dispatch => {
-        return axios.put(`https://quiet-fjord-20542.herokuapp.com/notes/${note._id}`, {
+        return axios.put(`/notes/${note._id}`, {
             _id: note._id,
             title: note.title,
             text: note.text
@@ -55,7 +56,7 @@ export const editNote = note => {
 
 export const deleteNote = _id => {
     return dispatch => {
-        return axios.delete(`https://quiet-fjord-20542.herokuapp.com/notes/${_id}`)
+        return axios.delete(`/notes/${_id}`)
         .then((response) => {
             dispatch({
                 type: DELETE_NOTE,
@@ -78,7 +79,7 @@ export const sortOldest = () => {
 
 export const search = (input) => {
     return dispatch => {
-        return axios.get('https://quiet-fjord-20542.herokuapp.com/notes')
+        return axios.get('/notes')
         .then((response) => {
             dispatch({
                 type: SEARCH,
