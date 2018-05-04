@@ -15,16 +15,19 @@ class Menu extends Component {
                     <Link to="/create">
                         <Button color="deoco" className="Button">+ Create New Note</Button>
                     </Link>
+                    <Link to="/signout">
+                        <Button color="deoco" className="Button">Sign Out</Button>
+                    </Link>
                 </Col>
             )
         } else {
             return (
                 <Col xs="12" md="3" className="Menu">
                     <h1 className='Menu__heading'>Lambda Notes</h1>
-                    <Link to="/notes">
+                    <Link to="/signin">
                         <Button color="deoco" className="Button">Sign In</Button>
                     </Link>
-                    <Link to="/create">
+                    <Link to="/register">
                         <Button color="deoco" className="Button">Register</Button>
                     </Link>
                 </Col>

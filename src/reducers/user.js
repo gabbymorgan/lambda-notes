@@ -1,4 +1,4 @@
-import { REGISTER, SIGNIN, SIGNOUT } from '../actions/user';
+import { REGISTER, SIGNIN, SIGNOUT, ERROR_SIGNIN } from '../actions/user';
 
 const initialState = {
     signedIn: false,
@@ -12,7 +12,9 @@ export default(state=initialState, action) => {
         case SIGNIN:
             return { ...state, signedIn: true }
         case SIGNOUT:
-            return Object.assign({}, { signedOut: true });
+            return Object.assign({}, { signedIn: false });
+        case ERROR_SIGNIN:
+            return Object.assign({}, { signedIn: false, authFail: true })
         default:
             return state;
     }

@@ -17,7 +17,8 @@ class Create extends Component {
     }
 
     handleSubmit(note) {
-        this.props.createNote(note);
+        this.props.createNote(note)
+        .then(this.props.history.push('/notes'))
     }
 
     render() {
