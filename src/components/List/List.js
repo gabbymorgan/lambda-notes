@@ -12,12 +12,12 @@ import './List.css';
 class List extends Component {
     handleNewest() {
         this.props.sortNewest();
-        this.props.history.push('/');
+        this.props.history.push('/notes');
     }
 
     handleOldest() {
         this.props.sortOldest();
-        this.props.history.push('/');
+        this.props.history.push('/notes');
     }
 
     componentDidMount() {
@@ -43,7 +43,11 @@ class List extends Component {
                 </Row>
                 <Row className="List__content">
                     {this.props.visibleNotes.map(note => {
-                        return <NoteCard key={note._id} note={note}/>
+                        return (
+                            <Col xs='12' md='6' xl='4'className="List__CardContainer">
+                        <NoteCard key={note._id} note={note}/>
+                        </Col>
+                        )
                     })}
                 </Row>
             </Container>

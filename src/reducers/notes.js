@@ -47,12 +47,12 @@ export default(state=initialState, action) => {
         case(SORT_OLDEST):
             return Object.assign({}, state, {
                 sortedBy: 'oldest',
-                visibleNotes: state.visibleNotes.sort((a, b) => parseInt(a.date, 10) > parseInt(b.date, 10)),
+                visibleNotes: state.visibleNotes.sort((a, b) => a.date > b.date),
             });
         case(SORT_NEWEST):
             return Object.assign({}, state, {
                 sortedBy: 'newest',
-                visibleNotes: state.visibleNotes.sort((a, b) => parseInt(a.date, 10) < parseInt(b.date, 10)),
+                visibleNotes: state.visibleNotes.sort((a, b) => a.date < b.date),
             });
         case(SEARCH):
             return Object.assign({}, state, {

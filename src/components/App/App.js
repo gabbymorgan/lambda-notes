@@ -4,6 +4,7 @@ import { Route, Link } from 'react-router-dom';
 import { Row, Col, Button } from 'reactstrap';
 import { createNote, search } from '../../actions/notes';
 
+import Menu from '../Menu/Menu';
 import Landing from '../Landing/Landing';
 import Register from '../Register/Register';
 import SignIn from '../SignIn/SignIn';
@@ -17,15 +18,7 @@ class App extends Component {
   render() {
     return (
         <Row className="Container">
-          <Col xs="12" md="3" className="Menu">
-            <h1 className='Menu__heading'>Lambda Notes</h1>
-            <Link to="/notes">
-              <Button color="deoco" className="Button">View Your Notes</Button>
-            </Link>
-            <Link to="/create">
-              <Button color="deoco" className="Button">+ Create New Note</Button>
-            </Link>
-          </Col>
+          <Menu />
           <Col className="ContentArea">
             <Route exact path="/" component={Landing}/>
             <Route path="/register" component={Register}/>

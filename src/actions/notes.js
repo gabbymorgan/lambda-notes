@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { SIGNIN } from './user';
+
 export const CREATE_NOTE = 'CREATE_NOTE';
 export const EDIT_NOTE = 'EDIT_NOTE';
 export const DELETE_NOTE = 'DELETE_NOTE';
@@ -14,6 +16,7 @@ export const fetchNotes = () => {
         .then((response) => {
             console.log(response);
             dispatch({ type: FETCH_NOTES, notes: response.data });
+            dispatch({ type: SIGNIN });
         })
         .catch((error) => console.log(error))};
 }
