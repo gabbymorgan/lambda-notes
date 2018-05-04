@@ -8,9 +8,9 @@ export const ERROR_SIGNIN = 'ERROR_SIGNIN';
 
 export const register = user => {
     return dispatch => {
-        return axios('https://quiet-fjord-20542.herokuapp.com/users/register', user)
+        return axios
+        .post('https://quiet-fjord-20542.herokuapp.com/users/register', user)
         .then((response) => {
-            console.log(response);
             dispatch({
                 type: REGISTER,
             });

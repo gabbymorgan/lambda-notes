@@ -22,7 +22,7 @@ class Register extends Component {
     handleSubmit() {
         const user = { ...this.state };
         this.props.signIn(user)
-        .then(this.props.history.push('/notes'));
+        .then(() => this.props.history.push('/notes'));
     }
 
     render() {

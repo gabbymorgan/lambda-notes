@@ -22,7 +22,8 @@ class Register extends Component {
 
     handleSubmit() {
         const user = { ...this.state };
-        this.props.register(user);
+        this.props.register(user)
+        .then(() => this.props.history.push('/signin'));
     }
 
     render() {
