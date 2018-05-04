@@ -45,20 +45,18 @@ export default(state=initialState, action) => {
                 visibleNotes: state.visibleNotes.filter(note => note._id !== action._id),
             });
         case(SORT_OLDEST):
-            console.log(state.visibleNotes);
             return Object.assign({}, state, {
                 sortedBy: 'oldest',
-                visibleNotes: state.visibleNotes.sort((a, b) => parseInt(a._id) > parseInt(b._id)),
+                visibleNotes: state.visibleNotes.sort((a, b) => parseInt(a.date, 10) > parseInt(b.date, 10)),
             });
         case(SORT_NEWEST):
             return Object.assign({}, state, {
                 sortedBy: 'newest',
-                visibleNotes: state.visibleNotes.sort((a, b) => parseInt(a._id) < parseInt(b._id)),
+                visibleNotes: state.visibleNotes.sort((a, b) => parseInt(a.date, 10) < parseInt(b.date, 10)),
             });
         case(SEARCH):
             return Object.assign({}, state, {
                 visibleNotes: action.notes.filter(
-                    note => note !== null).filter(
                         note => note.text.toLowerCase().includes(action.input.toLowerCase()) || note.title.toLowerCase().includes(action.input.toLowerCase())),
             });
         default:

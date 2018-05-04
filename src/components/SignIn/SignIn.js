@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Container, Form, FormGroup, Input, Button } from 'reactstrap';
+import { Container, Form, Input, Button } from 'reactstrap';
 
 import { signIn } from '../../actions/user';
 import { fetchNotes } from '../../actions/notes';
@@ -21,8 +21,6 @@ class Register extends Component {
     handleSubmit() {
         const user = { ...this.state };
         this.props.signIn(user)
-        .then(() => this.props.fetchNotes());
-        this.props.history.push('/notes');
     }
 
     render() {

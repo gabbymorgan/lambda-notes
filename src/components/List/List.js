@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Container, Row, Col } from 'reactstrap';
+import { bindActionCreators } from 'redux';
 
 import NoteCard from '../NoteCard/NoteCard';
 import Searchbar from '../Searchbar/Searchbar';
@@ -42,11 +43,7 @@ class List extends Component {
                 </Row>
                 <Row className="List__content">
                     {this.props.visibleNotes.map(note => {
-                        return (
-                        <Col key={note.id} className="List__card-Container" xs="12" md="6" xl="4">
-                            <NoteCard note={note}/>
-                        </Col>
-                        )
+                        return <NoteCard key={note._id} note={note}/>
                     })}
                 </Row>
             </Container>
@@ -54,12 +51,16 @@ class List extends Component {
     }
 }
 
-const mapStateToProps = state => {
+function mapStateToProps(state) {
     return {
-        sortedby: state.sortedby,
-        visibleNotes: state.visibleNotes,
+        sortedby: state.notesReducer.sortedby,
+        visibleNotes: state.notesReducer.visibleNotes,
     }
 }
 
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({ fetchNotes, sortNewest, sortOldest }, dispatch)
+}
 
-export default connect(mapStateToProps, { fetchNotes, sortNewest, sortOldest })(List);
+
+export default connect(mapStateToProps, mapDispatchToProps)(List);

@@ -25,7 +25,7 @@ class Note extends Component {
     componentDidMount() {
         this.setState({
             note: this.props.notes.find(note => {
-                return note.id === this.props.match.params.id
+                return note._id === this.props.match.params.id
             })
         });
         window.scrollTo(0, 0);
@@ -38,7 +38,7 @@ class Note extends Component {
     }
 
     handleDelete() {
-        this.props.deleteNote(this.state.note);
+        this.props.deleteNote(this.state.note._id);
         this.props.history.push('/');
     }
 
@@ -48,7 +48,7 @@ class Note extends Component {
                 <Row>
                     <Col xs="7" md="9"/>
                     <Col xs="4" md="2" className="Options">
-                        <Link to={`/edit/${this.state.note.id}`}>
+                        <Link to={`/edit/${this.state.note._id}`}>
                         <p className='Options__link'>edit</p>
                         </Link>
                         <p className='Options__link'
@@ -86,7 +86,7 @@ class Note extends Component {
 
 const mapStateToProps = state => {
     return {
-        notes: state.notes
+        notes: state.notesReducer.notes
     }
 }
 

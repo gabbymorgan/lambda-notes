@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Container, Form, FormGroup, Input, Button } from 'reactstrap';
+import { Container, Form, Input, Button } from 'reactstrap';
 
 import { register } from '../../actions/user';
 

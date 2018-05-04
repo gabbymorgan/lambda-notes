@@ -8,11 +8,9 @@ export const FETCH_NOTES = 'FETCH_NOTES';
 export const SEARCH = 'SEARCH';
 
 
-let noteId = 0;
-
 export const fetchNotes = () => {
     return dispatch => {
-        return axios.get('https://quiet-fjord-20542.herokuapp.com/notes')
+        return axios.get('https://quiet-fjord-20542.herokuapp.com/notes', { 'withCredentials': true, 'Access-Control-Allow-Credentials': true})
         .then((response) => {
             console.log(response);
             dispatch({ type: FETCH_NOTES, notes: response.data });
@@ -52,17 +50,13 @@ export const editNote = note => {
         .catch((error) => console.log(error))};
 }
 
-export const deleteNote = note => {
+export const deleteNote = _id => {
     return dispatch => {
-        return axios.delete(`https://quiet-fjord-20542.herokuapp.com/notes/${note._id}`, {
-            _id: note._id,
-        })
+        return axios.delete(`https://quiet-fjord-20542.herokuapp.com/notes/${_id}`)
         .then((response) => {
             dispatch({
                 type: DELETE_NOTE,
-                _id: note._id,
-                title: note.title,
-                text: note.text
+                _id
             })})
         .catch((error) => console.log(error))};
 }

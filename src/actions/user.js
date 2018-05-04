@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { FETCH_NOTES} from './notes';
 
 export const REGISTER = 'REGISTER';
 export const SIGNIN = 'SIGNIN';
@@ -18,12 +19,17 @@ export const register = user => {
 export const signIn = credentials => {
     return dispatch => {
         return axios
-        .post('https://quiet-fjord-20542.herokuapp.com/users/login', credentials, { withCredentials: true })
+        .post('https://quiet-fjord-20542.herokuapp.com/users/login', credentials, { 'withCredentials': true, 'Access-Control-Allow-Credentials': true })
         .then((response) => {
             console.log(response);
             dispatch({
                 type: SIGNIN,
             });
+            return axios.get('https://quiet-fjord-20542.herokuapp.com/notes', { 'withCredentials': true, 'Access-Control-Allow-Credentials': true})
+            .then((response) => {
+                console.log(response);
+                dispatch({ type: FETCH_NOTES, notes: response.data });
+            })
         })
         .catch((error) => console.log(error))};
 };

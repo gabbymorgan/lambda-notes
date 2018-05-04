@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, Link } from 'react-router-dom';
-import { Container, Row, Col, Button } from 'reactstrap';
+import { Row, Col, Button } from 'reactstrap';
 import { createNote, search } from '../../actions/notes';
 
 import Landing from '../Landing/Landing';
@@ -19,7 +19,7 @@ class App extends Component {
         <Row className="Container">
           <Col xs="12" md="3" className="Menu">
             <h1 className='Menu__heading'>Lambda Notes</h1>
-            <Link to="/">
+            <Link to="/notes">
               <Button color="deoco" className="Button">View Your Notes</Button>
             </Link>
             <Link to="/create">
@@ -30,7 +30,7 @@ class App extends Component {
             <Route exact path="/" component={Landing}/>
             <Route path="/register" component={Register}/>
             <Route path="/signin" component={SignIn}/>
-            <Route path="/notes" component={List}/>
+            <Route exact path="/notes" component={List}/>
             <Route path="/notes/:id" component={Note}/>
             <Route path="/edit/:id" component={Edit}/>
             <Route path="/create" component={Create}/>

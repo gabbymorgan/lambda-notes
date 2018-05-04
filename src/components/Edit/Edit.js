@@ -6,7 +6,7 @@ import { editNote } from '../../actions/notes';
 class Edit extends Component {
     state = {
         note: {
-            id: 0,
+            _id: 0,
             title: '',
             text: '',
         }
@@ -15,7 +15,7 @@ class Edit extends Component {
     componentDidMount() {
         this.setState({
             note: this.props.notes.find(note => {
-                return note.id === this.props.match.params.id
+                return note._id === this.props.match.params.id
             })
         })
     }
@@ -31,7 +31,7 @@ class Edit extends Component {
 
     handleSubmit() {
         this.props.editNote(this.state.note);
-        this.props.history.push('/');
+        this.props.history.push('/notes');
     }
 
     render() {
@@ -60,7 +60,7 @@ class Edit extends Component {
 
 const mapStateToProps = state => {
     return {
-        notes: state.notes
+        notes: state.notesReducer.notes
     }
 }
 
