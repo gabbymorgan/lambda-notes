@@ -19,7 +19,7 @@ import './App.css';
 class App extends Component {
 
   componentDidMount() {
-    console.log(Cookies.get(''));
+    console.log(Cookies.get('Auth'));
   }
 
   render() {

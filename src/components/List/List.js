@@ -45,8 +45,8 @@ class List extends Component {
                     <Row className="List__content">
                         {this.props.visibleNotes.map(note => {
                             return (
-                                <Col xs='12' md='6' xl='4'className="List__CardContainer">
-                            <NoteCard key={note._id} note={note}/>
+                            <Col xs='12' md='6' xl='4'className="List__CardContainer" key={note._id}>
+                                <NoteCard note={note}/>
                             </Col>
                             )
                         })}
