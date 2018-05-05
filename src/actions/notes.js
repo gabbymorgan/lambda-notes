@@ -31,9 +31,7 @@ export const createNote = note => {
         .then((response) => {
             dispatch({
                 type: CREATE_NOTE,
-                _id: response.data._id,
-                title: response.data.title,
-                text: response.data.text
+                note: response.data,
             });
         })
         .catch((error) => console.log(error))};
@@ -42,16 +40,12 @@ export const createNote = note => {
 export const editNote = note => {
     return dispatch => {
         return axios.put(`/notes/${note._id}`, {
-            _id: note._id,
-            title: note.title,
-            text: note.text
+            ...note
         })
         .then((response) => {
             dispatch({
                 type: EDIT_NOTE,
-                _id: note._id,
-                title: note.title,
-                text: note.text
+                note: Object.assign({}, response.data, note),
             })
         })
         .catch((error) => console.log(error))};

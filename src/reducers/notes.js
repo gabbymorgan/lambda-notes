@@ -24,26 +24,20 @@ export default(state=initialState, action) => {
         case(CREATE_NOTE):
             return Object.assign({}, state, {
                 notes: [...state.notes, {
-                    _id: action._id,
-                    title: action.title,
-                    text: action.text
+                    ...action.note
                 }]
             })
         case(EDIT_NOTE):
             return Object.assign({}, state, {
                 notes: state.notes.filter(note => {
-                    return note._id !== action._id
+                    return note._id !== action.note._id
                 }).concat({
-                    _id: action._id,
-                    title: action.title,
-                    text:action.text,
+                    ...action.note
                 }), 
                 visibleNotes: state.visibleNotes.filter(note => {
-                    return note._id !== action._id
+                    return note._id !== action.note._id
                 }).concat({
-                    _id: action._id,
-                    title: action.title,
-                    text:action.text,
+                    ...action.note
                 }), 
             });
         case(DELETE_NOTE):
