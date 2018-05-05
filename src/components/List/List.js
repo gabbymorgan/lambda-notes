@@ -33,8 +33,8 @@ class List extends Component {
                             <h4>Your Notes:</h4>
                         </Col>
                     </Row>
-                    <Row>
-                        <Col xs="12" md="6">
+                    <Row className="List__content">
+                        <Col xs="12" md="8">
                             <Searchbar/>
                         </Col>
                         <Col xs="6" md="2">

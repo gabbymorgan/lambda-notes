@@ -20,7 +20,7 @@
 }
 
 .Note__text {
-    margin: 1.1rem 0 0 -3% !important;
+    margin: 1.1rem 0 0 -1% !important;
 }
 
 .Note__text p {
@@ -39,7 +39,7 @@
 
 .Modal__Content {
     border-radius: 0 !important;
-    justify-content: center
+    justify-content: center;
 }
 
 .Modal__Body {
