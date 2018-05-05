@@ -22,7 +22,13 @@ export default(state=initialState, action) => {
                 visibleNotes: action.notes,
             });
         case(CREATE_NOTE):
-            return state;
+            return Object.assign({}, state, {
+                notes: [...state.notes, {
+                    _id: action._id,
+                    title: action.title,
+                    text: action.text
+                }]
+            })
         case(EDIT_NOTE):
             return Object.assign({}, state, {
                 notes: state.notes.filter(note => {

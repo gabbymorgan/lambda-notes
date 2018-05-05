@@ -28,7 +28,7 @@
     font-size: .9em;
 }
 
-.modal-dialog {
+.Modal {
     position: absolute;
     top: 8.8rem;
     right: 0;
@@ -37,33 +37,29 @@
     max-width: 530px !important;
 }
 
-.modal-content {
+.Modal__Content {
     border-radius: 0 !important;
     justify-content: center
 }
 
-.modal-body {
+.Modal__Body {
     text-align: center;
     height: 11.1rem;
 }
 
-.modal-body h4 {
+.Modal__Body h4 {
     font-size: .97em;
     letter-spacing: -0.0026em;
     margin: 1.7rem 2% 0 0;
 }
 
-.close {
-    display: none;
-}
-
-.DeleteModal__delete-button {
+.Modal__Button--delete {
     width: 38%;
     margin: 2rem 0 0 1.5%;
-    background: red;
+    background: rgb(146, 46, 46) !important;
 }
 
-.DeleteModal__no-button {
+.Modal__Button--no {
     margin: 2rem 0 0 4%;
     width: 38%;
 }

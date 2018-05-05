@@ -39,7 +39,7 @@ class Note extends Component {
 
     handleDelete() {
         this.props.deleteNote(this.state.note._id);
-        this.props.history.push('/');
+        this.props.history.push('/notes');
     }
 
     render() {
@@ -58,12 +58,19 @@ class Note extends Component {
                 </Row>
                 <Row>
                     <Col>
-                        <Modal isOpen={this.state.modal} toggle={this.toggleModal}>
-                            <ModalBody>
+                        <Modal isOpen={this.state.modal} toggle={this.toggleModal} className="Modal">
+                            <ModalBody className="Modal__Body">
                                 <h4>Are you sure you want to delete this?</h4>
-                                <Button className="Button DeleteModal__delete-button" color="deoco" onClick={() => this.handleDelete()}>
-                                    Delete</Button>{' '}
-                                <Button className="Button DeleteModal__no-button" color="deoco" onClick={this.toggleModal}>No</Button>
+                                <Row>
+                                    <Col>
+                                        <Button className="Button Modal__Button--delete" color="deoco" onClick={() => this.handleDelete()}>
+                                            Delete
+                                        </Button>
+                                    </Col>
+                                    <Col>
+                                        <Button className="Button Modal__Button--no" color="deoco" onClick={this.toggleModal}>No</Button>
+                                    </Col>
+                                </Row>
                             </ModalBody>
                         </Modal>
                     </Col>

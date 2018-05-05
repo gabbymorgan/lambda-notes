@@ -32,14 +32,16 @@ class List extends Component {
                         <Col xs="12" md="2" className="Content__heading__col">
                             <h4>Your Notes:</h4>
                         </Col>
+                    </Row>
+                    <Row>
                         <Col xs="12" md="6">
                             <Searchbar/>
                         </Col>
                         <Col xs="6" md="2">
-                            <h4 className="Options__link" onClick={() => this.handleNewest()}>newest</h4>
+                            <h4 className="Options__link List__link" onClick={() => this.handleNewest()}>newest</h4>
                         </Col>
                         <Col xs="6" md="2">
-                            <h4 className="Options__link" onClick={() => this.handleOldest()}>oldest</h4>
+                            <h4 className="Options__link List__link" onClick={() => this.handleOldest()}>oldest</h4>
                         </Col>
                     </Row>
                     <Row className="List__content">

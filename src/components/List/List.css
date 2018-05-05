@@ -11,3 +11,7 @@
 .List__card-Container {
     margin: 0 0 2em 0;
 }
+
+.List__link {
+    margin: 5% 0 1rem 5% !important;
+}

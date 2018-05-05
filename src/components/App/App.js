@@ -21,7 +21,7 @@ class App extends Component {
     return (
         <Row className="Container">
           <Menu />
-          <Col className="ContentArea">
+          <Col xs='12' md='9' className="ContentArea">
             <Route exact path="/" component={Landing}/>
             <Route path="/register" component={Register}/>
             <Route path="/signin" component={SignIn}/>
@@ -36,10 +36,4 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    notes: state.notes
-  }
-}
-
-export default connect(mapStateToProps, { createNote, search })(App);
+export default connect(null, { createNote, search })(App);

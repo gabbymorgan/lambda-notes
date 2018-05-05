@@ -31,6 +31,9 @@ export const createNote = note => {
         .then((response) => {
             dispatch({
                 type: CREATE_NOTE,
+                _id: response.data._id,
+                title: response.data.title,
+                text: response.data.text
             });
         })
         .catch((error) => console.log(error))};

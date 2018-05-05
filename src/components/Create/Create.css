@@ -1,6 +1,6 @@
 .Create__button {
-    margin: 0 0 0 ;
-    width: 32%;
+    margin: 0 0 1rem 0;
+    width: 32%   !important;
 }
 
 .Create__heading {
