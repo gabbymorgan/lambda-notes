@@ -8,10 +8,15 @@
     margin: 0 0 3em 0;
 }
 
-.List__card-Container {
+.List__heading__col h4{
+    width: 50vw;
+    margin: 0 0 .5rem 10%;
+}
+
+.List__Card-Container {
     margin: 0 0 2em 0;
 }
 
 .List__link {
-    margin: 5% 0 1rem 5% !important;
+    margin: 0 0 1rem 5% !important;
 }

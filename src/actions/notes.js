@@ -26,9 +26,11 @@ export const createNote = note => {
     return dispatch => {
         return axios.post(`/notes/`, {
             title: note.title,
-            text: note.text
+            text: note.text,
+            date: Date.now(),
         })
         .then((response) => {
+            console.log(response.data);
             dispatch({
                 type: CREATE_NOTE,
                 note: response.data,
@@ -75,13 +77,8 @@ export const sortOldest = () => {
 }
 
 export const search = (input) => {
-    return dispatch => {
-        return axios.get('/notes')
-        .then((response) => {
-            dispatch({
-                type: SEARCH,
-                notes: response.data,
-                input});
-        })
-        .catch((error) => console.log(error))};
+    return {
+        type: SEARCH,
+        input
+    }
 }

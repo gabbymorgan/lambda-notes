@@ -19,6 +19,7 @@
   flex-flow: column;
   align-content: center;
   background: #D3D2D3;
+  text-align: center;
 }
 
 .Menu__heading {

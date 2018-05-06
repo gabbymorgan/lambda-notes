@@ -16,48 +16,45 @@ const initialState = {
 
 export default(state=initialState, action) => {
     switch(action.type) {
+        //assign notes from action to both notes and visibleNotes
         case(FETCH_NOTES):
             return Object.assign({}, state, {
                 notes: action.notes,
                 visibleNotes: action.notes,
             });
         case(CREATE_NOTE):
+        //concatenate notes with created note
             return Object.assign({}, state, {
-                notes: [...state.notes, {
-                    ...action.note
-                }]
+                notes: [...state.notes, { ...action.note }]
             })
         case(EDIT_NOTE):
+            const postEdit = state.notes.filter(note => {
+                return note._id !== action.note._id
+            }).concat({...action.note});
             return Object.assign({}, state, {
-                notes: state.notes.filter(note => {
-                    return note._id !== action.note._id
-                }).concat({
-                    ...action.note
-                }), 
-                visibleNotes: state.visibleNotes.filter(note => {
-                    return note._id !== action.note._id
-                }).concat({
-                    ...action.note
-                }), 
+                notes: postEdit,
+                visibleNotes: postEdit,
             });
         case(DELETE_NOTE):
+            const postDelete = state.visibleNotes.filter(note => note._id !== action._id);
             return Object.assign({}, state, {
-                visibleNotes: state.visibleNotes.filter(note => note._id !== action._id),
+                notes: postDelete,
+                visibleNotes: postDelete,
             });
         case(SORT_OLDEST):
             return Object.assign({}, state, {
                 sortedBy: 'oldest',
-                visibleNotes: state.visibleNotes.sort((a, b) => a.date > b.date),
+                visibleNotes: state.notes.sort((a, b) => a.date > b.date),
             });
         case(SORT_NEWEST):
             return Object.assign({}, state, {
                 sortedBy: 'newest',
-                visibleNotes: state.visibleNotes.sort((a, b) => a.date < b.date),
+                visibleNotes: state.notes.sort((a, b) => a.date < b.date),
             });
         case(SEARCH):
             return Object.assign({}, state, {
-                visibleNotes: action.notes.filter(
-                        note => note.text.toLowerCase().includes(action.input.toLowerCase()) || note.title.toLowerCase().includes(action.input.toLowerCase())),
+                visibleNotes: state.notes.filter(
+                    note => note.text.toLowerCase().includes(action.input.toLowerCase()) || note.title.toLowerCase().includes(action.input.toLowerCase())),
             });
         default:
             return state;
