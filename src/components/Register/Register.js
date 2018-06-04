@@ -39,7 +39,7 @@ class Register extends Component {
                     <Input type='text' name='username' onChange={this.handleChange.bind(this)}/>
                     <Label to='password'>Password</Label>
                     <Input type='password' name='password' onChange={this.handleChange.bind(this)}/>
-                    <Button className="Button Create__button" onClick={() => this.handleSubmit()}>Give me notes!</Button>
+                    <button className="Button Create__button" onClick={() => this.handleSubmit()}>Give me notes!</button>
                 </Form>
             </Container>
         )
