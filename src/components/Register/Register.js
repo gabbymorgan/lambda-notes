@@ -13,29 +13,52 @@ class Register extends Component {
         username: '',
         password: '',
         confirmPassword: '',
-        passwordMatch: true,
-        passwordLengthOk: true,
+        passwordMatch: '',
+        passwordLengthOk: '',
     }
 
     handleChange(event) {
+        let password;
+        let confirmPassword;
+        switch(event.target.name) {
+            case 'password':
+                password = event.target.value;
+                confirmPassword = this.state.confirmPassword;
+                break;
+            case 'confirmPassword':
+                password = this.state.password;
+                confirmPassword = event.target.value;
+                break;
+            default:
+                password = this.state.password;
+                confirmPassword = this.state.confirmPassword;
+                break;
+        }
+        const passwordLengthOk = password.length >= 8;
+        const passwordMatch = password === confirmPassword;
         this.setState({
+            passwordLengthOk,
+            passwordMatch,
             [event.target.name]: event.target.value,
         });
     }
 
     handleSubmit(event) {
         event.preventDefault();
-        const { firstName, lastName, email, username, password, confirmPassword} = { ...this.state };
-        if (password !== confirmPassword) {
-            //passwords don't match
-            this.setState({
-                passwordMatch: false,
-            });
-        } else if (password.length < 8) {
-            //password is too short
-            this.setState({
-                passwordLengthOk: false,
-            });
+        const { 
+            firstName, 
+            lastName, 
+            email, 
+            username, 
+            password, 
+            passwordLengthOk, 
+            passwordMatch 
+        } = { ...this.state };
+
+        if (!passwordLengthOk) {
+            //password too short modal
+        } else if (!passwordMatch) {
+            //passwords don't match modal
         }
         else {
             const user = {
@@ -66,10 +89,14 @@ class Register extends Component {
                     <Input type='text' name='lastName' onChange={this.handleChange.bind(this)}/>
                     <Label to='username'>Username</Label>
                     <Input type='text' name='username' onChange={this.handleChange.bind(this)}/>
+                    <Label to='email'>Email</Label>
+                    <Input type='text' name='email' onChange={this.handleChange.bind(this)}/>
                     <Label to='password'>Password</Label>
                     <Input type='password' name='password' onChange={this.handleChange.bind(this)}/>
+                    <p>{this.state.passwordLengthOk ? 'Password is good length.' : 'Password is too short.'}</p>
                     <Label to='confirmPassword'>Password</Label>
                     <Input type='password' name='confirmPassword' onChange={this.handleChange.bind(this)}/>
+                    <p>{this.state.passwordMatch ? 'Passwords match.' : 'Passwords do not match.'}</p>
                     <button className="Button Create__button" onClick={this.handleSubmit.bind(this)}>Give me notes!</button>
                 </Form>
             </Container>
