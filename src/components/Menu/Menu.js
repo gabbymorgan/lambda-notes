@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Row, Col, Button } from 'reactstrap';
+import { Col, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 class Menu extends Component {

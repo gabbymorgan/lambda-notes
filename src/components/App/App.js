@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Route, Link } from 'react-router-dom';
-import { Row, Col, Button } from 'reactstrap';
+import { Route } from 'react-router-dom';
+import { Row, Col } from 'reactstrap';
 import { createNote, search } from '../../actions/notes';
 
 import Cookies from 'js-cookie';
