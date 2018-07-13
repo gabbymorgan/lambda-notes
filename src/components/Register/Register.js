@@ -13,8 +13,8 @@ class Register extends Component {
         username: '',
         password: '',
         confirmPassword: '',
-        passwordMatch: '',
-        passwordLengthOk: '',
+        passwordMatch: true,
+        passwordLengthOk: true,
     }
 
     handleChange(event) {
@@ -34,7 +34,7 @@ class Register extends Component {
                 confirmPassword = this.state.confirmPassword;
                 break;
         }
-        const passwordLengthOk = password.length >= 8;
+        const passwordLengthOk = !password || password.length >= 8;
         const passwordMatch = password === confirmPassword;
         this.setState({
             passwordLengthOk,
@@ -93,10 +93,10 @@ class Register extends Component {
                     <Input type='text' name='email' onChange={this.handleChange.bind(this)}/>
                     <Label to='password'>Password</Label>
                     <Input type='password' name='password' onChange={this.handleChange.bind(this)}/>
-                    <p>{this.state.passwordLengthOk ? 'Password is good length.' : 'Password is too short.'}</p>
-                    <Label to='confirmPassword'>Password</Label>
+                    <p>{this.state.passwordLengthOk ? '' : 'Password is too short.'}</p>
+                    <Label to='confirmPassword'>Confirm Password</Label>
                     <Input type='password' name='confirmPassword' onChange={this.handleChange.bind(this)}/>
-                    <p>{this.state.passwordMatch ? 'Passwords match.' : 'Passwords do not match.'}</p>
+                    <p>{this.state.passwordMatch ? '' : 'Passwords do not match.'}</p>
                     <button className="Button Create__button" onClick={this.handleSubmit.bind(this)}>Give me notes!</button>
                 </Form>
             </Container>
